@@ -1,9 +1,8 @@
-package ActaDeNotas;
-
+package ActaDeNotas2;
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class ActasDeNotas {
+public class ActasDeNotas2 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -75,6 +74,9 @@ public class ActasDeNotas {
             System.out.print("Apellidos: ");
             String apellidos = obtenerTexto("Ingrese solo letras para Apellidos: ", scanner);
 
+            System.out.print("Número de Carné: ");
+            numerosCarnet[i] = scanner.nextLine();
+
             // Combinar nombres y apellidos en una sola cadena
             nombresApellidos[i] = nombres + " " + apellidos;
 
@@ -105,6 +107,8 @@ public class ActasDeNotas {
                 aprobados[i] = true;
             }
 
+            
+
             // Evaluar si el estudiante debe presentar examen de segunda convocatoria
             if (!aprobados[i]) {
                 examenesSegundaConvocatoria[i] = obtenerNota("CONV II", 100.0, scanner);
@@ -120,11 +124,13 @@ public class ActasDeNotas {
                 segundosParciales, notasFinales, examenesPrimeraConvocatoria, notasFinalesPrimeraConvocatoria,
                 examenesSegundaConvocatoria, aprobados, deserciones);
 
+                
+
         // Mostrar la matriz o tabla al final del programa
         System.out.println("\nMatriz o Tabla de Datos:");
 
-        System.out.printf("%-5s %-15s %-25s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-10s %-10s\n", "No.", "Carnet",
-                "Apellidos y Nombres", "IP", "Sistematicos", "IIP", "Nota final N.F.", "EXA CONV I", "N.F. I CONV",
+        System.out.printf("%-5s %-15s %-15s %-25s %-15s %-15s %-15s %-15s %-15s %-15s %-15s %-10s %-10s\n", "No.", "Carnet",
+                "Carnet", "Apellidos y Nombres", "IP", "Sistematicos", "IIP", "N.F.", "EXA CONV I", "N.F. I CONV",
                 "CONV II", "Aprobado", "Desercion");
 
         // Línea divisoria
@@ -132,8 +138,8 @@ public class ActasDeNotas {
                 "=====================================================================================================================================================================================");
 
         for (int i = 0; i < cantidadEstudiantes; i++) {
-            System.out.printf("%-5d %-15s %-25s %-15.2f %-15.2f %-15.2f %-15.2f %-15.2f %-15.2f %-15.2f %-10s %-10s\n",
-                    i + 1, numerosCarnet[i], nombresApellidos[i], primerParciales[i], sistematicos[i],
+            System.out.printf("%-5d %-15s %-15s %-25s %-15.2f %-15.2f %-15.2f %-15.2f %-15.2f %-15.2f %-15.2f %-10s %-10s\n",
+                    i + 1, numerosCarnet[i], numerosCarnet[i], nombresApellidos[i], primerParciales[i], sistematicos[i],
                     segundosParciales[i], notasFinales[i], examenesPrimeraConvocatoria[i],
                     notasFinalesPrimeraConvocatoria[i], examenesSegundaConvocatoria[i], aprobados[i] ? "Sí" : "No",
                     deserciones[i] ? "Sí" : "No");
@@ -142,6 +148,8 @@ public class ActasDeNotas {
             System.out.println(
                     "====================================================================================================================================================================================");
         }
+
+        
 
         // Mostrar reporte de datos estadísticos
         System.out.println("\nReporte de Datos Estadísticos:");
@@ -192,6 +200,10 @@ public class ActasDeNotas {
         System.out.println("Nota máxima: " + notaMaxima);
         System.out.printf("Promedio de notas: %.2f\n", Math.min(promedioNotas, 100.0));
     }
+
+
+    
+    
 
     // Métodos auxiliares
     private static double obtenerNota(String tipoNota, double maximo, Scanner scanner) {
@@ -298,4 +310,5 @@ public class ActasDeNotas {
 
         return texto;
     }
+
 }
